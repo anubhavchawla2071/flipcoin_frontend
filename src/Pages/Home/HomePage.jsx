@@ -5,13 +5,14 @@ import { Box } from '@mui/system'
 import { useContext } from 'react'
 import { ContextFunction } from '../../Context/Context'
 import CategoryCard from '../../Components/Category_Card/CategoryCard';
-import BannerData from '../../Helpers/HomePageBanner';
+// import BannerData from '../../Helpers/HomePageBanner';
+import ProductData from '../../Helpers/ProductBanner';
 import Carousel from '../../Components/Carousel/Carousel'
 import SearchBar from '../../Components/SearchBar/SearchBar'
 import CopyRight from '../../Components/CopyRight/CopyRight'
 const HomePage = () => {
     const { setCart } = useContext(ContextFunction)
-    let authToken = localStorage.getItem('Authorization')
+    let authToken = localStorage.getItem('email')
     useEffect(() => {
         getCart()
         window.scroll(0, 0)
@@ -43,7 +44,7 @@ const HomePage = () => {
                 <Typography variant='h3' sx={{ textAlign: 'center', marginTop: 10, color: '#1976d2', fontWeight: 'bold' }}>Categories</Typography>
                 <Container maxWidth='xl' style={{ marginTop: 90, display: "flex", justifyContent: 'center', flexGrow: 1, flexWrap: 'wrap', gap: 20, }}>
                     {
-                        BannerData.map(data => (
+                        ProductData.map(data => (
                             <CategoryCard data={data} key={data.img} />
                         ))
                     }

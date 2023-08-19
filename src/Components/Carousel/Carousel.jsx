@@ -29,7 +29,7 @@ const Carousel = () => {
             mouseTracking
             disableDotsControls
             autoPlay
-            autoPlayInterval={2500}
+            autoPlayInterval={250}
             responsive={responsive}
         />
     )

@@ -1,4 +1,4 @@
-import { GroupCloth, Shoes, Electronics, FemaleCloth, MaleCloth, Books, Jewelry } from '../Assets/Images/Image';
+import { GroupCloth, Shoes, Electronics, FemaleCloth, MaleCloth, Books, Jewelry ,tea} from '../Assets/Images/Image';
 const data = [
     {
         img: GroupCloth,
@@ -27,6 +27,6 @@ const data = [
     {
         img: Jewelry,
         name: "Jewelry"
-    },
+    }
 ]
 export default data

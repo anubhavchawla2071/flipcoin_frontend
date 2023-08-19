@@ -13,9 +13,20 @@ const DesktopNavigation = () => {
 
   const { cart, setCart, wishlistData, setWishlistData } = useContext(ContextFunction)
   const [openAlert, setOpenAlert] = useState(false);
+  const [userRegistered,setUserRegistered]=useState(false);
   const navigate = useNavigate()
-  let authToken = localStorage.getItem('Authorization');
+  let authToken = localStorage.getItem('email');
   let setProceed = authToken !== null ? true : false
+  console.log(authToken);
+
+  const handleClick=()=>{
+    setUserRegistered(true);
+    localStorage.setItem("registered",true);
+  }
+
+  const handleWallet=()=>{
+
+  }
   useEffect(() => {
     getCart(setProceed, setCart, authToken)
     getWishList(setProceed, setWishlistData, authToken)
@@ -63,16 +74,27 @@ const DesktopNavigation = () => {
                 <>
                   <li className="nav-links">
                     <Tooltip title='Profile'>
-                      <NavLink to='/update'>
+                      <NavLink to='/profile'>
                         <span className='nav-icon-span'>  <CgProfile style={{ fontSize: 29, marginTop: 7,marginRight:10 }} /></span>
                       </NavLink>
                     </Tooltip>
+                  </li>
+                  <li style={{ display: 'flex', alignItems: 'center', justifyItems: 'center' }}>
+                    <Button variant='contained' className='nav-icon-span' sx={{ marginBottom: 1 ,marginRight:1}} onClick={handleWallet} endIcon={<FiLogOut />}>
+                      <Typography variant='button'> Connect Wallet</Typography>
+                    </Button>
                   </li>
                   <li style={{ display: 'flex', alignItems: 'center', justifyItems: 'center' }} onClick={() => handleClickOpen(setOpenAlert)}>
                     <Button variant='contained' className='nav-icon-span' sx={{ marginBottom: 1 }} endIcon={<FiLogOut />}>
                       <Typography variant='button'> Logout</Typography>
                     </Button>
                   </li>
+                  {userRegistered?null:
+                  <li style={{ display: 'flex', alignItems: 'center', justifyItems: 'center' }}>
+                    <Button variant='contained' className='nav-icon-span' sx={{ marginBottom: 1,marginLeft:1 }} endIcon={<FiLogOut />}>
+                      <Typography variant='button' onClick={handleClick}> Register</Typography>
+                    </Button>
+                  </li>}
                 </>
                 :
                 <li className="nav-links">
